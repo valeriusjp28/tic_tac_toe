@@ -1,0 +1,288 @@
+<html>
+	<head>
+		<title>Tic Tac Toe -- Justin Valerius</title>
+		<link rel="stylesheet" type="text/css" href="../stylesheets/tic_tac.css"/>
+		<script src="../scripts/test.js"></script>
+
+	</head>
+	<body>
+		<center>
+
+		<h1>Tic Tac Tow jQuery Game</h1>
+		
+		<table class="game" id="board">
+			<tr>
+				<td id="one" class="gamer"></td>
+				<td id="two" class="gamer"></td>
+				<td id="three" class="gamer"></td>
+			</tr>
+				
+			<tr>
+				<td id="four" class="gamer"></td>
+				<td id="five" class="gamer"></td>
+				<td id="six" class="gamer"></td>
+			</tr>
+					
+			<tr>
+				<td id="seven" class="gamer"></td>
+				<td id="eight" class="gamer"></td>
+				<td id="nine" class="gamer"></td>
+			</tr>
+		</table>
+		<p id="start">Click here to start the game!</p>
+
+		<table id="Score">
+		    <tr>
+		      <td>X</td>
+		      <td>O</td>
+		    </tr>
+		    <tr>
+		      <td id="X">0</td>
+		      <td id="O">0</td>
+		    </tr>
+		</table>
+		</center>
+
+		<script>
+		var x = "X"
+		var o = "O"
+		var xScore = 0;
+		var oScore = 0;
+		var turn
+		var win = new Array()
+
+		$(
+		  function() {
+		    $("#board td").hover (
+		      function() {	
+			$(this).addClass("highlight");
+		      },
+		      function() {
+		      $(this).removeClass("highlight");
+		      }
+		    )
+		  }
+		 )
+		
+		$("#start").one("click", function() {
+		  start();
+		});
+		
+		function start() {
+		  alert("The game has started! Click a square to begin! (X always starts)");
+		   for (var j = 0; j<9; j++) {
+		    win[j] = null;
+		  }
+		  turn = 0;
+		  $(".gamer").text("");
+		  //$("#start").remove();
+		  $("#one").click(one);
+		  $("#two").click(two);
+		  $("#three").click(three);
+		  $("#four").click(four);
+		  $("#five").click(five);
+		  $("#six").click(six);
+		  $("#seven").click(seven);
+		  $("#eight").click(eight);
+		  $("#nine").click(nine);
+		};
+		
+		var one = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[0] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[0] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+  
+		var two = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[1] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[1] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+
+		var three = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[2] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[2] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+
+		var four = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[3] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[3] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+  
+		var five = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[4] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[4] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+
+		var six = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[5] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[5] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+
+		var seven = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[6] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    checkWinO();
+		    win[6] = 1;
+		  }
+		  turn++;
+		};
+  
+		var eight = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[7] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[7] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+
+		var nine = function(event){
+		  if (turn % 2 == 0) {
+		    $(this).append(x);
+		    $(this).unbind(event);
+		    win[8] = 0;
+		    checkWin();
+		  }
+		  else {
+		    $(this).append(o);
+		    $(this).unbind(event);
+		    win[8] = 1;
+		    checkWinO();
+		  }
+		  turn++;
+		};
+	
+		function xWin() {
+		  $("#X").text(++xScore);
+		};
+  
+		function oWin() {
+		  $("#O").text(++oScore);
+		};
+
+		function checkWin() {
+		  //alert("Checking"); 
+		  if ( 
+		    (win[0] == 0) && (win[1] == 0) && (win[2] == 0)) { alert("Game over X"); xWin(); start(); } //top across
+		  if (
+		    (win[0] == 0) && (win[3] == 0) && (win[6] == 0)) { alert("Game over X"); xWin(); start(); }//top down
+		  if (
+		    (win[0] == 0) && (win[4] == 0) && (win[8] == 0)) { alert("Game over X"); xWin(); start(); } //diagonal top left to bot right
+		  if (  
+		    (win[1] == 0) && (win[4] == 0) && (win[7] == 0)) { alert("Game over X"); xWin(); start(); } //down middle
+		  if (  
+		    (win[2] == 0) && (win[5] == 0) && (win[8] == 0)) { alert("Game over X"); xWin(); start(); } //down right
+		  if (  
+		    (win[3] == 0) && (win[4] == 0) && (win[5] == 0)) { alert("Game over X"); xWin(); start(); } //across middle
+		  if (  
+		    (win[6] == 0) && (win[7] == 0) && (win[8] == 0)) { alert("Game over X"); xWin(); start(); } //across bottom
+		  if (  
+		    (win[2] == 0) && (win[4] == 0) && (win[6] == 0)) { alert("Game over X"); xWin(); start(); } //diagonal top right to bot left
+		  if (turn == 8) {
+		    alert("Game has been tied! Restarting!");
+		    start();
+		  }
+		   };
+
+		 function checkWinO() { 
+		   if ( 
+		    (win[0] == 1) && (win[1] == 1) && (win[2] == 1)) { alert("Game over 0"); oWin(); start(); } //top across
+		  if (
+		    (win[0] == 1) && (win[3] == 1) && (win[6] == 1)) { alert("Game over O"); oWin(); start(); }//top down
+		  if (
+		    (win[0] == 1) && (win[4] == 1) && (win[8] == 1)) { alert("Game over 0"); oWin(); start(); } //diagonal top left to bot right
+		  if (  
+		    (win[1] == 1) && (win[4] == 1) && (win[7] == 1)) { alert("Game over 0"); oWin(); start(); } //down middle
+		  if (  
+		    (win[2] == 1) && (win[5] == 1) && (win[8] == 1)) { alert("Game over 0"); oWin(); start(); } //down right
+		  if (  
+		    (win[3] == 1) && (win[4] == 1) && (win[5] == 1)) { alert("Game over 0"); oWin(); start(); } //across middle
+		  if (  
+		    (win[6] == 1) && (win[7] == 1) && (win[8] == 1)) { alert("Game over 0"); oWin(); start(); } //across bottom
+		  if (  
+		    (win[2] == 1) && (win[4] == 1) && (win[6] == 1)) { alert("Game over 0"); oWin(); start(); } //diagonal top right to bot left
+		   };
+
+		
+		</script>
+	</body>
+</html>
